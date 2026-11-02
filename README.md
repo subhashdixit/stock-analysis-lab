@@ -111,3 +111,7 @@ Historical example: [Plotly datasets finance-charts-apple.csv](https://github.co
 No live quote service, trading actions, LSTM inference, stationarity guarantee or investment recommendation. Price-adjustment policy depends on the source. Imported prices must be positive; daily calendar gaps and holidays are preserved rather than fabricated. Forecast horizon uses observation indices. A stable historical backtest can fail after market conditions change.
 
 The test suite checks calculation contracts and invalid inputs. It cannot establish that an input dataset is representative, that a heuristic is scientifically correct for every domain, or that a result is suitable for an automated consequential decision. Read the original source alongside the maintained browser implementation when comparing behavior.
+
+## Local dependency installation
+
+The maintained app is HTML/CSS/JavaScript and needs no Python packages. `requirements.txt` documents this; install development tools with `npm ci` using the pinned Node/npm versions. See [DEPENDENCIES.md](DEPENDENCIES.md). Original prototype requirements are preserved at `archive/prototype-requirements.in` where present; they are not the supported install command.
