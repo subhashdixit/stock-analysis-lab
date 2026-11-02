@@ -1,5 +1,8 @@
 # Stock Analysis Lab
 
+**Reproducible versions:** [Dependency versions and exact setup](DEPENDENCIES.md).
+
+
 [Open the application](https://subhashdixit.github.io/stock-analysis-lab/) · [Report an issue](https://github.com/subhashdixit/stock-analysis-lab/issues)
 
 The original stock notebook/app required an older Python neural-network stack and a live data fetch. The maintained browser app provides a reproducible price-analysis study with real attributed historical data, transparent baselines and explicit temporal evaluation.
