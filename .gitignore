@@ -132,3 +132,6 @@ node_modules/
 .pylint-cache/
 __pycache__/
 .env
+
+!site/
+!site/**
