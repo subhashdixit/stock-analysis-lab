@@ -1,1 +1,108 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Explore historical prices and compare transparent forecasting baselines with chronological evaluation."><title>Stock Analysis Lab</title><link rel="stylesheet" href="./styles.css"></head><body><header><div class="badge">Subhash Dixit · Applied portfolio</div><h1>Stock Analysis Lab</h1><p>Explore historical prices and compare transparent forecasting baselines with chronological evaluation.</p><a href="https://github.com/subhashdixit/stock-analysis-lab">Source, concepts and operating guide ↗</a></header><main><section class="grid"><div><h2>1 · Historical price input</h2><button id="example">Load historical AAPL example</button><label>CSV: date, close (50–5,000 observations; 5 MiB)<input id="file" type="file" accept=".csv,text/csv"></label><p class="muted">Example: adjusted AAPL prices, 17 Feb 2015–16 Feb 2017. This is historical study data, not a live quote.</p></div><div><h2>2 · Compare and forecast</h2><label>Future observation steps (1–20)<input id="horizon" type="number" value="10" min="1" max="20"></label><button id="run">Analyze history</button><button id="export" disabled>Export forecast and test predictions</button></div></section><section><h2>History and moving averages</h2><svg id="prices"></svg><p id="summary"></p></section><section><h2>Held-out rolling one-step predictions</h2><div class="scroll"><table><thead><tr><th>Method</th><th>Validation MAE</th><th>Test MAE</th><th>Test RMSE</th></tr></thead><tbody id="scores"></tbody></table></div><svg id="test-chart"></svg><p>Every test prediction uses only prices observed before that target. The AR parameters are frozen before the test interval; earlier test prices become available as time advances.</p></section><section><h2>Recursive future observations</h2><svg id="forecast"></svg><p id="forecast-note"></p></section><p id="status" role="status" aria-live="polite"></p><details><summary>How this works · scope and limitations</summary><p>Compare last-price, average-drift and autoregressive (AR5 ridge) methods. A 60% training / 20% validation / 20% test split preserves time order. Choose a method using validation MAE, then evaluate once on the held-out test. Future steps mean observations, not calendar dates. This research tool gives no trading advice, current market feed or guaranteed returns.</p></details></main><footer><p>GitHub Pages · HTML / JavaScript · Original project preserved in source.</p></footer><script type="module" src="./app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Explore historical prices and compare transparent forecasting baselines with chronological evaluation."
+    />
+    <title>Stock Analysis Lab</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="badge">Subhash Dixit · Applied portfolio</div>
+      <h1>Stock Analysis Lab</h1>
+      <p>
+        Explore historical prices and compare transparent forecasting baselines
+        with chronological evaluation.
+      </p>
+      <a href="https://github.com/subhashdixit/stock-analysis-lab"
+        >Source, concepts and operating guide ↗</a
+      >
+    </header>
+    <main>
+      <section class="grid">
+        <div>
+          <h2>1 · Historical price input</h2>
+          <button id="example">Load historical AAPL example</button
+          ><label
+            >CSV: date, close (50–5,000 observations; 5 MiB)<input
+              id="file"
+              type="file"
+              accept=".csv,text/csv"
+          /></label>
+          <p class="muted">
+            Example: adjusted AAPL prices, 17 Feb 2015–16 Feb 2017. This is
+            historical study data, not a live quote.
+          </p>
+        </div>
+        <div>
+          <h2>2 · Compare and forecast</h2>
+          <label
+            >Future observation steps (1–20)<input
+              id="horizon"
+              type="number"
+              value="10"
+              min="1"
+              max="20" /></label
+          ><button id="run">Analyze history</button
+          ><button id="export" disabled>
+            Export forecast and test predictions
+          </button>
+        </div>
+      </section>
+      <section>
+        <h2>History and moving averages</h2>
+        <svg id="prices"></svg>
+        <p id="summary"></p>
+      </section>
+      <section>
+        <h2>Held-out rolling one-step predictions</h2>
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>Validation MAE</th>
+                <th>Test MAE</th>
+                <th>Test RMSE</th>
+              </tr>
+            </thead>
+            <tbody id="scores"></tbody>
+          </table>
+        </div>
+        <svg id="test-chart"></svg>
+        <p>
+          Every test prediction uses only prices observed before that target.
+          The AR parameters are frozen before the test interval; earlier test
+          prices become available as time advances.
+        </p>
+      </section>
+      <section>
+        <h2>Recursive future observations</h2>
+        <svg id="forecast"></svg>
+        <p id="forecast-note"></p>
+      </section>
+      <p id="status" role="status" aria-live="polite"></p>
+      <details>
+        <summary>How this works · scope and limitations</summary>
+        <p>
+          Compare last-price, average-drift and autoregressive (AR5 ridge)
+          methods. A 60% training / 20% validation / 20% test split preserves
+          time order. Choose a method using validation MAE, then evaluate once
+          on the held-out test. Future steps mean observations, not calendar
+          dates. This research tool gives no trading advice, current market feed
+          or guaranteed returns.
+        </p>
+      </details>
+    </main>
+    <footer>
+      <p>
+        GitHub Pages · HTML / JavaScript · Original project preserved in source.
+      </p>
+    </footer>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
